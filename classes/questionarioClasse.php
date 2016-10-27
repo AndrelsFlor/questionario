@@ -37,12 +37,28 @@
 		
 
 		public function selecionaPerguntas($idTurma){
-			$sql = "SELECT * FROM tblpergunta INNER JOIN professorturma ON professorturma.idProfessor = tblpergunta.idProfessor AND professorturma.idTurma = :idTurma INNER JOIN tblprofessor ON professorturma.idProfessor = tblprofessor.ID";
+			$sql = "SELECT * FROM tblpergunta  INNER JOIN professorturma ON professorturma.idProfessor = tblpergunta.idProfessor AND professorturma.idTurma = :idTurma INNER JOIN tblprofessor ON professorturma.idProfessor = tblprofessor.ID ";
 			$stmt = BD::prepare($sql);
 			$stmt->bindParam(':idTurma',$idTurma);
 			$stmt->execute();
-			return $stmt->fetchAll();
+			$result1 = $stmt->fetchAll();
+
+			$sql2 = "SELECT * FROM tblpergunta WHERE idProfessor = 0";
+			$stmt2 = BD::prepare($sql2);
+			$stmt2->execute();
+			$result2 = $stmt2->fetchAll();
+
+
+
+			$resultFinal = (object) array_merge((array) $result1, (array) $result2);
+
+			return $resultFinal;
+
+
+
 		}
+
+
 
 		public function insereQuestoes($idPergunta, $idProfessor){
 			$sql = "INSERT INTO tblquestionarioquestoes(IDPergunta, IDProfessor) VALUES(:idPergunta, :idProfessor)";

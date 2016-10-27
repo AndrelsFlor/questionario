@@ -60,15 +60,22 @@
    		$aux++;
     	
     	} 
-    	
-    ?>
+    	if($perguntas[$i]->idProfessor != 0){
+        echo $perguntas[$i]->idProfessor;
+    ?>    
    <p><?php echo $perguntas[$i]->Nome .":&nbsp;". $perguntas[$i]->Enunciado; ?></p>
    <?php
+      }
+      else{
+    ?>
+    <p><?php echo  $perguntas[$i]->Enunciado; ?></p>
+    <?php
+      }
    		if($perguntas[$i]->Tipo == 1){
    	?>
    		<input type="text" name="resposta" placeholder = "Resposta">
    		<input type="hidden" name="tipo" value="<?php echo $perguntas[$i]->Tipo;?>" >
-   		 <input type="hidden" value="<?php echo $perguntas[$i]->id?>" name="idP">
+   		 <input type="hidden" value="<?php echo $perguntas[$i]->id;?>" name="idP">
    	<?php
 
 

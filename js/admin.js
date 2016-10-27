@@ -227,19 +227,15 @@ $(document).on("submit","#cadPergDissert",function(e){
 $(document).on("submit","#cadPergMult",function(e){
 	e.preventDefault();
 	var idTopico = $("#cadPergMult select[name = 'selectTop']").val();
-	var idProfessor = $("#cadPergMult select[name = 'selectProf']").val();
+	
 	var tipo = 2;
 	var enunciado = $("#cadPergMult textarea[name='enunciado']").val();
 	var acao = 'insereMult';
-	var pergA = $("#cadPergMult input[name='opA']").val();
-	var pergB = $("#cadPergMult input[name='opB']").val();
-	var pergC = $("#cadPergMult input[name='opC']").val();
-	var pergD = $("#cadPergMult input[name='opD']").val();
-	var pergE = $("#cadPergMult input[name='opE']").val();
+	
 	$.ajax({
 		url:"main.php",
 		type:"POST",
-		data:{idTopico:idTopico,idProfessor:idProfessor,tipo:tipo,enunciado:enunciado,acao:acao, pergA:pergA,pergB:pergB,pergC:pergC,pergD:pergD,pergE:pergE},
+		data:{idTopico:idTopico,tipo:tipo,enunciado:enunciado,acao:acao},
 		success: function(){
 			alert("Pergunta inserida com sucesso!");
 			$("#cadPergMult").trigger("reset");

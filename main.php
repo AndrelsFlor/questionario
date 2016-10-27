@@ -614,6 +614,7 @@ else if($acao == 'insereDissert'){
 		}
 	}
 	else{
+		$pergunta->setIDProfessor(0);
 		$pergunta->insert();
 	}
 
@@ -647,6 +648,7 @@ else if($acao == 'insereMult'){
 		}
 	}
 	else{
+		$pergunta->setIDProfessor(0);
 		$pergunta->insert();
 	}
 

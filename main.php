@@ -872,6 +872,45 @@ else if($acao == 'deletaPergunta'){
 	
 	
 	}
+	else if($acao == 'logProf'){
+	?>
+	<div class="panel panel-success">
+		<div class="panel-heading">Login de Professores</div>
+		<div class="panel-body">
+			<form id="formLogProf">
+				<input type="text" name="login" placeholder="Login"><br><br>
+				<input type="hidden" name="acao" value="insereLogProf">
+				<button class="btn btn-success">Cadastrar</button>
+			</form>
+
+		</div>
+	</div>
+	<br>
+	<div class="panel panel-success">
+		<div class="panel-heading">Login de Funcionários</div>
+		<div class="panel-body">
+			<form id="formLogFunc">
+				<input type="text" name="login" placeholder="Login"><br><br>
+				<input type="hidden" name="acao" value="insereLogFunc">
+				<button class="btn btn-success">Cadastrar</button>
+			</form>
+
+		</div>
+	</div>
+	<?php
+	}
+	else if($acao=='insereLogProf'){
+		$login = $_POST["login"];
+		$turma = new Turma();
+		$turma->setLogin($login);
+		$turma->insertProfFunc();
+	}
+	else if($acao=='insereLogFunc'){
+		$login = $_POST["login"];
+		$turma = new Turma();
+		$turma->setLogin($login);
+		$turma->insertProfFunc();
+	}
 
 
 

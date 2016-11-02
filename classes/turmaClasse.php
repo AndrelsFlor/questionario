@@ -19,16 +19,28 @@
 		}
 
 		public function insert(){
-			$sql = "INSERT INTO $this->tabela(Login,QtdAlunos,Termo,Ano,Semestre) VALUES(:login,:QtdAlunos,:termo,:ano,:semestre)";
+			$sql = "INSERT INTO $this->tabela(Login,QtdAlunos,Termo,Ano,Semestre,tipo) VALUES(:login,:QtdAlunos,:termo,:ano,:semestre,1)";
 			$stmt = BD::prepare($sql);
 			$stmt->bindParam(':login',		$this->login);
 			$stmt->bindParam(':QtdAlunos',	$this->QtdAlunos);
 			$stmt->bindParam(':termo',		$this->termo);
 			$stmt->bindParam(':ano',		$this->ano);
 			$stmt->bindParam(':semestre',	$this->semestre);
+			
 			return $stmt->execute();
 
 			
+		}
+
+		public function insertProfFunc(){
+			$sql = "INSERT INTO $this->tabela(Login, QtdAlunos,Termo,Ano,Semestre,tipo) VALUES(:login,0,0,0,0,0)";
+			
+			$stmt = BD::prepare($sql);
+
+			$stmt->bindParam(':login',$this->login);
+		
+
+			return $stmt->execute();
 		}
 
 		public function update($id){

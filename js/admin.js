@@ -91,6 +91,19 @@ $("#cadProf").click(function(e){
 	});
 });
 
+$("#logProf").click(function(e){
+	e.preventDefault();
+	$.ajax({
+		url:"main.php",
+		type:"POST",
+		data:{acao:"logProf"},
+		success:function(data){
+			$("#pgContent").html(data);
+
+		}
+	});
+});
+
 $("#cadTopico").click(function(e){
 	e.preventDefault();
 	$.ajax({
@@ -298,7 +311,33 @@ $(document).on("click",".btnPergList",function(e){
 	});
 });
 
+$(document).on("submit","#formLogProf",function(e){
+	data = $(this).serialize();
+	e.preventDefault();
+	$.ajax({
+		url:"main.php",
+		type:"POST",
+		data:data,
+		success:function(){
+			alert("Login inserido com sucesso!");
+		}
+	});
 
+});
+
+$(document).on("submit","#formLogFunc",function(e){
+	data = $(this).serialize();
+	e.preventDefault();
+	$.ajax({
+		url:"main.php",
+		type:"POST",
+		data:data,
+		success:function(){
+			alert("Login inserido com sucesso!");
+		}
+	});
+
+});
 });
 
 

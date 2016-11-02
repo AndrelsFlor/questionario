@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<?php
+    //ABANDONE TODA ESPERANÇA AQUELE QUE AQUI ENTRAR
 	session_start();
 
 	if(isset($_SESSION['login']) && isset($_SESSION['senha'])){
@@ -56,6 +58,9 @@
                 <li id="cadTurmas">
                     <a href="#">Cadastro de Turmas</a>
                 </li >
+                 <li id="logProf">
+                    <a href="#">Login de professores e funcionários</a>
+                </li>
                 <li id ="cadProf">
                     <a href="#">Cadastro de Professores</a>
                 </li>
